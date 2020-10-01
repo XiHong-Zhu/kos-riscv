@@ -11,16 +11,16 @@ static inline uint64 mhartid(){
 }
 
 
-// MPP
-#define MSTATUS_MPP_MASK (3L << 11)
-#define MSTATUS_MPP_M    (3L << 11)
-#define MSTATUS_MPP_S    (1L << 11)
-#define MSTATUS_MPP_U    (0L << 11)
-#define MSTATUS_MIE      (1L << 3)
+// MPP 
+#define MSTATUS_MPP_MASK (3L << 11)     
+#define MSTATUS_MPP_M    (3L << 11)     // Machine mode
+#define MSTATUS_MPP_S    (1L << 11)     // Supervisor mode
+#define MSTATUS_MPP_U    (0L << 11)     // User mode
+#define MSTATUS_MIE      (1L << 3)      // Machine mode interrupt enable
 
-#define MIE_MEIE         (1L << 11)
-#define MIE_MTIE         (1L << 7)
-#define MIE_MSIE         (1L << 3)
+#define MIE_MEIE         (1L << 11)     // Machine mode external interrupt enable
+#define MIE_MTIE         (1L << 7)      // Machine mode time interrupt enable
+#define MIE_MSIE         (1L << 3)      // Machine mode software interrupt enable
 
 static inline uint64 r_mstatus(){
     uint64 x;
@@ -29,15 +29,19 @@ static inline uint64 r_mstatus(){
 }
 
 static inline void w_mstatus(uint64 x){
-    asm volatile("csrw mstatus"::"r"(x));
+    asm volatile("csrw mstatus, %0"::"r"(x));
 }
 
+// machine exception program counter
+static inline void w_mepc(uint64 x){
+    asm volatile("csrw mepc, %0"::"r"(x));
+}
 
 #define SSTATUS_SPP     (1L << 8)
-#define SSTATUS_SPIE    (1L << 5)
-#define SSTATUS_UPIE    (1L << 4)
-#define SSTATUS_SIE     (1L << 1)
-#define SSTATUS_UIE     (1L << 0)
+#define SSTATUS_SPIE    (1L << 5)   // Supervisor previous interrupt enable
+#define SSTATUS_UPIE    (1L << 4)   // User previous interrupt enable
+#define SSTATUS_SIE     (1L << 1)   // Supervisor interrupt enable
+#define SSTATUS_UIE     (1L << 0)   // User interrupt enable
 
 
 #define SIE_SEIE        (1L << 9)

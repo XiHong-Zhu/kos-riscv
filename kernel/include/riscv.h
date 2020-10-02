@@ -198,4 +198,20 @@ static inline uint64 r_tp()
   return x;
 }
 
+static inline void intr_on()
+{
+  w_sstatus(r_sstatus() | SSTATUS_SIE);
+}
+
+static inline void intr_off()
+{
+  w_sstatus(r_sstatus() & ~SSTATUS_SIE);
+}
+
+static inline int intr_get()
+{
+  uint64 x = r_sstatus();
+  return (x & SSTATUS_SIE) != 0;
+}
+
 #endif 

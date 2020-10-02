@@ -3,7 +3,9 @@ K = kernel
 OBJS = $K/entry.o \
 	$K/start.o \
 	$K/kernelvec.o \
-	$K/main.o
+	$K/main.o \
+	$K/cpu.o \
+	$K/spinlock.o
 
 ifndef TOOLPREFIX
 TOOLPREFIX := $(shell if riscv64-unknown-elf-objdump -i 2>&1 | grep 'elf64-big' >/dev/null 2>&1; \

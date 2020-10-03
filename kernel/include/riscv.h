@@ -1,9 +1,5 @@
 #include "types.h"
 
-#ifndef _RISCV_H
-
-#define _RISCV_H
-
 // hatr id
 static inline uint64 mhartid(){
     uint64 x;
@@ -176,13 +172,13 @@ static inline uint64 r_satp(){
     return x;
 }
 
-static inline void w_mscatch(uint64 x){
-    asm volatile("csrw sscratch, %0"::"r"(x));
+static inline void w_mscratch(uint64 x){
+    asm volatile("csrw mscratch, %0"::"r"(x));
 }
 
 static inline uint64 r_mscratch(){
     uint64 x;
-    asm volatile("csrr %0, sscratch":"=r"(x));
+    asm volatile("csrr %0, mscratch":"=r"(x));
     return x;
 }
 
@@ -247,4 +243,3 @@ static inline int intr_get()
 typedef uint64 pte_t;
 typedef uint64 *pagetable_t; // 512 PTEs
 
-#endif 

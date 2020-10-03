@@ -15,9 +15,9 @@ timervec:
     li a1, 2
     csrw sip, a1
 
-    ld a3, 16(a0)
+    ld a3, 32(a0)
     ld a2, 24(a0)
-    ld a1, 32(a0)
+    ld a1, 16(a0)
     csrrw a0, mscratch, a0
 
     mret

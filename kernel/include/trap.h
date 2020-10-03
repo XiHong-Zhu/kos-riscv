@@ -1,0 +1,2 @@
+void trapinit();
+void trapinithart();

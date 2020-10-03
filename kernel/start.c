@@ -46,7 +46,7 @@ void timerinit(){
     int id = mhartid();
 
     // 时间片长度为1秒
-    int interval = 50000000;
+    int interval = 100000000;
     // 设置时钟比较器
     *(uint64*)CLINT_MTIMECMP(id) = *(uint64 *)CLINT_MTIME + interval;
     
@@ -58,7 +58,7 @@ void timerinit(){
     scratch[1] = interval;
 
     // 设置mscratch寄存器
-    w_mscatch((uint64)scratch);
+    w_mscratch((uint64)scratch);
     
     // 设置M模式中断处理程序
     w_mtvec((uint64)timervec);

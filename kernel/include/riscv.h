@@ -210,6 +210,10 @@ static inline int intr_get()
   return (x & SSTATUS_SIE) != 0;
 }
 
+#define SATP_SV39 (8L << 60)
+
+#define MAKE_SATP(pagetable) (SATP_SV39 | (((uint64)pagetable) >> 12))
+
 #define PGSIZE 4096 // bytes per page
 #define PGSHIFT 12  // bits of offset within a page
 
@@ -243,3 +247,7 @@ static inline int intr_get()
 typedef uint64 pte_t;
 typedef uint64 *pagetable_t; // 512 PTEs
 
+static inline void sfence_vma()
+{
+  asm volatile("sfence.vma zero, zero");
+}

@@ -8,6 +8,8 @@ OBJS = $K/entry.o \
 	$K/string.o \
 	$K/kalloc.o \
 	$K/main.o \
+	$K/trampoline.o \
+	$K/vm.o
 
 
 ifndef TOOLPREFIX

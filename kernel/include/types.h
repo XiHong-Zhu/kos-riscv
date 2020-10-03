@@ -10,5 +10,6 @@ typedef unsigned short uint16;
 typedef unsigned int uint32;
 typedef unsigned long uint64;
 
+typedef uint64 pde_t;
 
 #endif

@@ -1,6 +1,9 @@
 #include "include/spinlock.h"
 #include "include/riscv.h"
 
+void push_off();
+void pop_off();
+
 void initlock(struct spinlock * lk, char * name){
     lk->locked = 0;
     lk->name = name;

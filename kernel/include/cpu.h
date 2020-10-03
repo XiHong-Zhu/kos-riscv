@@ -9,8 +9,6 @@ struct cpu{
     int intr_enabled;
 };
 
-struct cpu cpus[NCPU];
-
 int cpuid();
 
 struct cpu * mycpu();

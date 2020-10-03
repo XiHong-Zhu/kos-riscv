@@ -1,6 +1,18 @@
 #include "include/kalloc.h"
 #include "include/riscv.h"
 #include "include/memlayout.h"
+#include "include/string.h"
+
+extern char end[];
+
+struct run {
+    struct run * next;
+};
+
+struct {
+    struct spinlock lock;
+    struct run * freelist;
+} kmemory;
 
 void freerange(void *pa_start, void *pa_end)
 {
@@ -9,6 +21,7 @@ void freerange(void *pa_start, void *pa_end)
   for(; p + PGSIZE <= (char*)pa_end; p += PGSIZE)
     kfree(p);
 }
+
 
 void kinit()
 {
@@ -30,7 +43,7 @@ void kfree(void *pa)
   release(&kmemory.lock);
 }
 
-void * kalloc(void)
+void * kalloc()
 {
   struct run *r;
 

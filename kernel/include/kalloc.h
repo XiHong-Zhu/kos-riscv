@@ -1,14 +1,13 @@
 #include "spinlock.h"
 
-extern char end[];
+#ifndef _KALLOC_H
 
-struct run {
-    struct run * next;
-};
-
-struct {
-    struct spinlock lock;
-    struct run * freelist;
-} kmemory;
+#define _KALLOC_H
 
 void kinit();
+
+void * kalloc();
+
+void kfree(void *pa);
+
+#endif

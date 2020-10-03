@@ -10,10 +10,10 @@ struct spinlock{
     struct cpu * cpu;
 };
 
-void initlock(spinlock * lk, char * name);
+void initlock(struct spinlock * lk, char * name);
 
-void acquire(spinlock * lk);
+void acquire(struct spinlock * lk);
 
-void release(spinlock * lk);
+void release(struct spinlock * lk);
 
 #endif

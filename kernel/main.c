@@ -1,5 +1,5 @@
-#include "cpu.h"
-#include "kalloc.h"
+#include "include/cpu.h"
+#include "include/kalloc.h"
 
 static int started = 0;
 

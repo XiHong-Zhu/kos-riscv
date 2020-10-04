@@ -45,8 +45,8 @@ void timerinit(){
     // 获取 hartid
     int id = mhartid();
 
-    // 时间片长度为1秒
-    int interval = 100000000;
+    // 时间片长度为1/10秒
+    int interval = 1000000;
     // 设置时钟比较器
     *(uint64*)CLINT_MTIMECMP(id) = *(uint64 *)CLINT_MTIME + interval;
     
@@ -64,6 +64,6 @@ void timerinit(){
     w_mtvec((uint64)timervec);
 
     // M模式开中断
-    w_mstatus(r_mscratch() | MSTATUS_MIE);
+    w_mstatus(r_mstatus() | MSTATUS_MIE);
     w_mie(r_mie() | MIE_MTIE);
 }

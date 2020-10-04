@@ -1,6 +1,7 @@
 #include "include/cpu.h"
 #include "include/kalloc.h"
 #include "include/vm.h"
+#include "include/trap.h"
 
 static int started = 0;
 
@@ -9,6 +10,8 @@ void main(){
         kinit();
         kvminit();
         kvminithart();
+        trapinit();
+        trapinithart();
         started = 1;
     }else{
         while(started == 0);

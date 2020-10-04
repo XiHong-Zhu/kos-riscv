@@ -2,6 +2,9 @@
 
 #define _MEMLAYOUT_H
 
+#define UART 0x10000000L
+#define UART_IRQ 10
+
 // Core Local Interrupt 
 #define CLINT 0x2000000L
 // Core Local Interrupt TIMECMP

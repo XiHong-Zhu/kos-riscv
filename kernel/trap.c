@@ -8,7 +8,7 @@ uint ticks;
 extern void kernelvec();
 
 void trapinit(){
-    initlock(&tickslock, "ticks");
+  initlock(&tickslock, "ticks");
 }
 
 void trapinithart(void)

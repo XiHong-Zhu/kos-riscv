@@ -8,15 +8,15 @@ uint ticks;
 extern void kernelvec();
 
 void trapinit(){
-  initlock(&tickslock, "ticks");
+    initlock(&tickslock, "ticks");
 }
 
 void trapinithart(void)
 {
-  w_stvec((uint64)kernelvec);
+    w_stvec((uint64)kernelvec);
 }
 
 void kerneltrap(){
-    
+
 }
 

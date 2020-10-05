@@ -157,6 +157,12 @@ static inline uint64 r_stvec(){
     return x;
 }
 
+static inline uint64 r_scause(){
+    uint64 x;
+    asm volatile("csrr %0, scause":"=r"(x));
+    return x;
+}
+
 // Supervisor Trap Value
 static inline uint64 r_stval()
 {

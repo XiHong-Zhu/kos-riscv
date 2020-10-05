@@ -2,6 +2,7 @@
 #include "include/riscv.h"
 #include "include/kalloc.h"
 #include "include/string.h"
+#include "include/memlayout.h"
 
 
 pagetable_t kernel_pagetable;
@@ -10,12 +11,16 @@ extern char etext[];
 
 extern char trampoline[];
 
+void kvmmap(uint64 va, uint64 pa, uint64 sz, int permision);
+
 void kvminit(){
     // 分配页表页
     kernel_pagetable = (pagetable_t) kalloc();
     memset(kernel_pagetable, 0 , PGSIZE);
-    
-
+    kvmmap(CLINT, CLINT, 0x10000, PTE_R | PTE_W);
+    kvmmap(KERNBASE, KERNBASE, (uint64)etext-KERNBASE, PTE_R | PTE_X);
+    kvmmap((uint64)etext, (uint64)etext, PHYSTOP-(uint64)etext, PTE_R | PTE_W);
+    kvmmap(TRAMPOLINE, (uint64)trampoline, PGSIZE, PTE_R | PTE_X);
 }
 
 void kvminithart(){

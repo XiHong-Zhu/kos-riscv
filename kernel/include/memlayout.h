@@ -1,3 +1,5 @@
+#include "riscv.h"
+
 #ifndef _MEMLAYOUT_H
 
 #define _MEMLAYOUT_H
@@ -14,5 +16,7 @@
 
 #define KERNBASE 0x80000000L
 #define PHYSTOP (KERNBASE + 128*1024*1024)
+
+#define TRAMPOLINE (MAXVA - PGSIZE)
 
 #endif

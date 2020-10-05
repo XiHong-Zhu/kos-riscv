@@ -1,5 +1,9 @@
 #include "types.h"
 
+#ifndef _RISCV_H
+
+#define _RISCV_H
+
 // hatr id
 static inline uint64 mhartid(){
     uint64 x;
@@ -251,3 +255,5 @@ static inline void sfence_vma()
 {
   asm volatile("sfence.vma zero, zero");
 }
+
+#endif

@@ -46,7 +46,7 @@ void timerinit(){
     int id = mhartid();
 
     // 时间片长度为1/10秒
-    int interval = 1000000;
+    int interval = 100000000;
     // 设置时钟比较器
     *(uint64*)CLINT_MTIMECMP(id) = *(uint64 *)CLINT_MTIME + interval;
     

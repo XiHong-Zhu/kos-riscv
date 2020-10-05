@@ -3,6 +3,8 @@
 #include "include/vm.h"
 #include "include/trap.h"
 #include "include/riscv.h"
+#include "include/console.h"
+#include "include/printf.h"
 
 static int started = 0;
 
@@ -13,6 +15,9 @@ void scheduler(){
 
 void main(){
     if(cpuid() == 0){
+        consoleinit();
+        printfinit();
+        printf("kos is launching\n");
         kinit();
         kvminit();
         kvminithart();

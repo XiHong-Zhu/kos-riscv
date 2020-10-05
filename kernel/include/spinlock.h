@@ -16,4 +16,8 @@ void acquire(struct spinlock * lk);
 
 void release(struct spinlock * lk);
 
+void push_off();
+
+void pop_off();
+
 #endif

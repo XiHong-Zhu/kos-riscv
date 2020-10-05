@@ -10,7 +10,10 @@ OBJS = $K/entry.o \
 	$K/main.o \
 	$K/trampoline.o \
 	$K/vm.o \
-	$K/trap.o
+	$K/trap.o \
+	$K/uart.o \
+	$K/console.o \
+	$K/printf.o
 
 
 ifndef TOOLPREFIX

@@ -1,5 +1,6 @@
 #include "include/cpu.h"
 #include "include/riscv.h"
+#include "defines.h"
 
 struct cpu cpus[NCPU];
 
